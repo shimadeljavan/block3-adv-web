@@ -20,10 +20,15 @@ class Plant
 
 $plant = new Plant("Rose", "red", "daily", "full sun");
 echo $plant->name, "<br>";
-
 echo $plant->color, "<br>";
 echo $plant->watering, "<br>"; 
 echo $plant->sunlight, "<br>";
+
+$plant1 = new Plant("Sunflower", "yellow", "once a week", "partial sun");
+echo $plant1->name, "<br>";
+echo $plant1->color, "<br>";
+echo $plant1->watering, "<br>";
+echo $plant1->sunlight, "<br>";
 
 
 
