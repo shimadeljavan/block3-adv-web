@@ -1,4 +1,9 @@
+
 <?php
+
+ini_set('display_errors', 1);
+
+$globalId = 0;
 
 class Plant
 {
@@ -6,33 +11,61 @@ class Plant
     public $color;
     public $watering;
     public $sunlight;
+    public $age;
 
+    function __construct($name, $color, $watering, $sunlight, $age){
 
-    function __construct($name, $color, $watering, $sunlight){
-        $this->name = $name;
+        global $globalId;  
+        $globalId++;   
+           
+        $this->name = $name ." ". $globalId;
         $this->color = $color;
         $this->watering = $watering;
         $this->sunlight = $sunlight;
-    }
+        $this->age = $age;
        
-    
+    }
+
+
+public function getName(){
+    return $this->name;
 }
 
-$plant = new Plant("Rose", "red", "daily", "full sun");
-echo $plant->name, "<br>";
-echo $plant->color, "<br>";
-echo $plant->watering, "<br>"; 
-echo $plant->sunlight, "<br>";
+public function getColor(){
+    return $this->color;
+}
 
-$plant1 = new Plant("Sunflower", "yellow", "once a week", "partial sun");
-echo $plant1->name, "<br>";
-echo $plant1->color, "<br>";
-echo $plant1->watering, "<br>";
-echo $plant1->sunlight, "<br>";
+public function getWatering(){
+    return $this->watering;
+}
+
+public function getSunlight(){
+    return $this->sunlight;
+}
+
+public function getAge(){
+    if ($this->age <= 3){
+        echo "This plant is new.";
+    }else{
+        echo "This plant is old.";
+    }
+    }
+}
 
 
+$plant = new Plant("Rose", 5, "red", "daily", "full sun");
+echo "Name:",$plant->getName(), "<br>";
+echo "Color:", $plant->getColor(), "<br>";
+echo  "Watering:",$plant->getWatering(), "<br>";
+echo "Sunlight:",$plant->getSunlight(), "<br>";
+echo "Age:",$plant->getAge(), "<br>";
 
-
+$plant1 = new Plant("Sunflower", 1, "yellow", "once a week", "partial sun");
+echo "Name:",$plant1->getName(), "<br>";
+echo "Color:", $plant1->getColor(), "<br>";
+echo  "Watering:",$plant1->getWatering(), "<br>";
+echo "Sunlight:",$plant1->getSunlight(), "<br>";
+echo "Age:",$plant1->getAge(), "<br>";
 
 
 ?>
