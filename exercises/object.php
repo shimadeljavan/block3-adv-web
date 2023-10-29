@@ -1,71 +1,73 @@
-
 <?php
 
 ini_set('display_errors', 1);
 
-$globalId = 0;
-
-class Plant
-{
+class Flower {
     public $name;
-    public $color;
-    public $watering;
-    public $sunlight;
-    public $age;
+    private $color;
+    private $age;
+    private $price;
 
-    function __construct($name, $color, $watering, $sunlight, $age){
-
-        global $globalId;  
-        $globalId++;   
-           
-        $this->name = $name ." ". $globalId;
+    public function __construct($name, $color, $age, $price) {
+        $this->name = $name;
         $this->color = $color;
-        $this->watering = $watering;
-        $this->sunlight = $sunlight;
         $this->age = $age;
-       
+        $this->price = $price;
     }
 
-
-public function getName(){
-    return $this->name;
-}
-
-public function getColor(){
-    return $this->color;
-}
-
-public function getWatering(){
-    return $this->watering;
-}
-
-public function getSunlight(){
-    return $this->sunlight;
-}
-
-public function getAge(){
-    if ($this->age <= 3){
-        echo "This plant is new.";
-    }else{
-        echo "This plant is old.";
+    public function getName() {
+        return $this->name;        
     }
+
+    public function ageRule() {
+        if ($this->age >= 5) {
+            return "it's young flower";
+        } else {
+            return "it's old flower";
+        }
+    }
+
+    public function setAgeRule($age) {
+        $this->age = $age;
+    }
+
+    public function colorRule() {
+        return $this->color;
+    }
+
+    public function setColorRule($color) {
+        $this->color = $color;
+    }
+
+    public function getPrice() {
+        return $this->price;
+    }
+
+    public function setPrice($price) {
+        if ($price > 30) {
+            $discountedPrice = $price * 0.9; 
+            $this->price = $discountedPrice;
+        } else {
+            $this->price = $price;
+            
+        }
     }
 }
 
+$flower1 = new Flower("Rose", "Red", 5, 20);
+echo "Name: " . $flower1->getName() . "<br>";
+echo "Age Rule: " . $flower1->ageRule() . "<br>";
+echo "Color Rule: " . $flower1->colorRule() . "<br>";
+$flower1->setPrice(20);
+echo "Price: " . $flower1->getPrice() . "<br>";
 
-$plant = new Plant("Rose", 5, "red", "daily", "full sun");
-echo "Name:",$plant->getName(), "<br>";
-echo "Color:", $plant->getColor(), "<br>";
-echo  "Watering:",$plant->getWatering(), "<br>";
-echo "Sunlight:",$plant->getSunlight(), "<br>";
-echo "Age:",$plant->getAge(), "<br>";
+$flower2 = new Flower("Tulip", "green", 10, 33);
+echo "Name: " . $flower2->getName() . "<br>";
+echo "Age Rule: " . $flower2->ageRule() . "<br>";
+echo "Color Rule: " . $flower2->colorRule() . "<br>";
+$flower2->setPrice(33);
+echo "Price: " . $flower2->getPrice() . "<br>";
 
-$plant1 = new Plant("Sunflower", 1, "yellow", "once a week", "partial sun");
-echo "Name:",$plant1->getName(), "<br>";
-echo "Color:", $plant1->getColor(), "<br>";
-echo  "Watering:",$plant1->getWatering(), "<br>";
-echo "Sunlight:",$plant1->getSunlight(), "<br>";
-echo "Age:",$plant1->getAge(), "<br>";
 
 
 ?>
