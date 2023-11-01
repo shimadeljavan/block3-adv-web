@@ -7,6 +7,7 @@ class Flower {
     private $color;
     private $age;
     private $price;
+    
 
     public function __construct($name, $color, $age, $price) {
         $this->name = $name;
@@ -15,9 +16,9 @@ class Flower {
         $this->price = $price;
     }
 
-    public function getName() {
-        return $this->name;        
-    }
+    // public function getName() {
+    //     return $this->name;        
+    // }
 
     public function ageRule() {
         if ($this->age >= 5) {
@@ -48,18 +49,20 @@ class Flower {
             $discountedPrice = $price * 0.9; 
             $this->price = $discountedPrice;
         } else {
-            $this->price = $price;
+            // $this->price = $price;
             
         }
     }
 }
 
 $flower1 = new Flower("Rose", "Red", 5, 20);
-echo "Name: " . $flower1->getName() . "<br>";
+echo "Name: " . $flower1->name . "<br>";
 echo "Age Rule: " . $flower1->ageRule() . "<br>";
 echo "Color Rule: " . $flower1->colorRule() . "<br>";
 $flower1->setPrice(20);
 echo "Price: " . $flower1->getPrice() . "<br>";
+echo $flower1->ageRule() . "<br>";
+
 
 $flower2 = new Flower("Tulip", "green", 10, 33);
 echo "Name: " . $flower2->getName() . "<br>";
