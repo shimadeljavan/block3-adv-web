@@ -16,9 +16,9 @@ class Flower {
         $this->price = $price;
     }
 
-    // public function getName() {
-    //     return $this->name;        
-    // }
+    public function getName() {
+        return $this->name;        
+    }
 
     public function ageRule() {
         if ($this->age >= 5) {
@@ -49,7 +49,7 @@ class Flower {
             $discountedPrice = $price * 0.9; 
             $this->price = $discountedPrice;
         } else {
-            // $this->price = $price;
+            $this->price = $price;
             
         }
     }
