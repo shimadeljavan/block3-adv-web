@@ -3,7 +3,7 @@
 | Header | Title |
 | Paragraph | Text |
 
-/*Employee*/
+**Employee**
 
 | NIN | eNAME | hotelNo | contractNo |
 | ----------- | ----------- | ----------- | ----------- |
@@ -16,7 +16,7 @@ hotel
 | H24 | Glasgow |
 
 
-(new)
+**new**
 Employee
 | employeeID | NAME | homestate | jobcode |
 | ----------- | ----------- | ----------- | ----------- |
@@ -27,7 +27,7 @@ JOB
 | ----------- | ----------- |
 | E001 | chef |
 
-(new)
+**new**
 auther
 
 | autherID | auther | auther_natinality | gendre |
@@ -39,7 +39,7 @@ book
 | ----------- | ----------- | ----------- |
 | E001 | A confession | 125 |
 
-NEW tutor
+**NEW** tutor
 
 | tutorID | toturEmail | book | room | date | unitID |
 | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
@@ -55,7 +55,7 @@ unit
 | ----------- | ----------- | ----------- | ----------- |
 | u1 | GMT |  | usiwisstopo | 629 |
 
-new patient
+**new** patient
 
 | patient NO | patient Name |
 | ----------- | ----------- |
