@@ -1,4 +1,4 @@
-###Suppliers
+| Suppliers      |            |             |
 | -------------- | ---------- | ----------- |
 | SupplierID    | SupplierName |            |
 | -------------- | ------------ | ----------- |
@@ -6,7 +6,7 @@
 | E002           | FreshFarms   |            |
 
 
-###Ingredients   
+| Ingredients    |            |              |                |                  |
 | -------------- | ---------- | ------------ | -------------- | ---------------- |
 | IngredientID  | IngredientName | Type       | CostPerUnit  | SupplierID (FK) |
 | -------------- | ------------ | ------------ | -------------- | ---------------- |
@@ -16,7 +16,7 @@
 
 
 
-###Dishes 
+| Dishes         |            |             |
 | -------------- | ---------- | ----------- |
 | DishID        | DishName   | Description |
 | -------------- | ---------- | ----------- |
@@ -24,8 +24,8 @@
 | D002           | Salad       | Fresh mixed vegetables with vinaigrette |
 
 
-###DishIngredients
-
+| DishIngredients |              |                 |
+| --------------- | ------------ | --------------- |
 | Quantity       | DishID (FK) | IngredientID (FK) |
 | --------------- | ------------ | --------------- |
 | 2               | D001         | I001            |
