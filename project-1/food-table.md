@@ -34,7 +34,7 @@
 | 2               | D002         | I003            |
 
 
-
+### Pricing Information
 | PricingID | Cost | MarkupPercentage | SupplierID (FK) | IngredientID (FK) | DishID (FK) |
 |-----------|------|------------------|------------------|-------------------|-------------|
 | P001      | $2.00| 0.20             | E001             | I001              | D001        |
