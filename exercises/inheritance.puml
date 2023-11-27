@@ -113,9 +113,9 @@ class truck extends Vehicles{
 
 class Cars extends Vehicles{
     #other properties for cars
-     + calculateFuelEfficiency()
-   + calculateDistanceTraveled
-   + getMaxSpeed()
+    + calculateFuelEfficiency()
+    + calculateDistanceTraveled
+    + getMaxSpeed()
 }
 
 class Motorcycle extends Vehicles{

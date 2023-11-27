@@ -1,0 +1,30 @@
+@startuml
+
+class Suppliers {
+  +SupplierID
+  +SupplierName
+}
+
+class Ingredients {
+  +IngredientID
+  +IngredientName
+  +Type
+  +CostPerUnit
+}
+
+class Dishes {
+  +DishID
+  +DishName
+  +Description
+}
+
+class DishIngredients {
+  +Quantity
+}
+
+class Pricing {
+  +PricingID
+  +Cost
+  +MarkupPercentage
+}
+@enduml
