@@ -1,30 +1,41 @@
-@startuml Food vendor
+@startuml
 
-class Suppliers {
-  +SupplierID
-  +SupplierName
+class Supplier {
+  - name
+  - address
+  - contactNumber
+  +__construct($name, $address, $contactNumber)
+  -priceChange()
+  -supplierChange()
 }
 
-class Ingredients {
-  +IngredientID
-  +IngredientName
-  +Type
-  +CostPerUnit
+class Ingredient {
+  - name
+  - type
+  -supplierId
++__constracrut($name, $type, $supplierId )
+  -priceChange()
+  -supplierChange()
 }
 
-class Dishes {
-  +DishID
-  +DishName
-  +Description
+class Dish {
+  - name
+  - price
+  +__constracrut($name, $price)
+  + getIngredients()
+  +getPrice()
 }
 
-class DishIngredients {
-  +Quantity
+class FoodVendor {
+  - dishes
+  - suppliers
+  +__constracrut($dishes, $suppliers)
+  + addDish()
+  + removeDish()
+  + getDishes()
+  + addSupplier()
+  + removeSupplier()
+  + getSuppliers()
 }
 
-class Pricing {
-  +PricingID
-  +Cost
-  +MarkupPercentage
-}
 @enduml
