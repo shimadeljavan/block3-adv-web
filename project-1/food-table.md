@@ -1,9 +1,8 @@
-| Suppliers     |               |               |
-| ------------- | ------------- | ------------- | ------------- |
-| SupplierID    | SupplierName  | Address       | ContactNumber |
-| ------------- | ------------- | ------------- |------------- |
-| E001          | Supplier 1     | 123 Main Street | 555-1234      |
-| E002          | Supplier 2     | 456 Oak Avenue  | 555-5678      |
+| Suppliers     |               |               |               |
+| SupplierID | SupplierName | Address          | ContactNumber |
+|------------|--------------|------------------|---------------|
+| E001       | Supplier 1   | 123 Main Street  | 555-1234      |
+| E002       | Supplier 2   | 456 Oak Avenue   | 555-5678      |
 
 
 
