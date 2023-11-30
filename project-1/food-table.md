@@ -1,4 +1,4 @@
-| Suppliers     |               |               |               |
+| Suppliers  |              |                  |               |
 | SupplierID | SupplierName | Address          | ContactNumber |
 |------------|--------------|------------------|---------------|
 | E001       | Supplier 1   | 123 Main Street  | 555-1234      |
