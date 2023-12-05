@@ -7,21 +7,21 @@
 
 
 
-| Ingredients   |               |              |                |
-| ------------- | ------------- | ------------ | -------------- |
-| IngredientID  | IngredientName| Type         | SupplierID (FK)|
-| ------------- | ------------- | ------------ | -------------- |
-| I001          | Flour         | Grain        | E001           |
-| I002          | Tomatoes      | Vegetable    | E002           |
-| I003          | Cheese        | Dairy        | E002           |
+| Ingredients   |               |              |                |              |
+| ------------- | ------------- | ------------ | -------------- | ------------ |
+| IngredientID  | IngredientName| Type         | SupplierID (FK)|      Price   |
+| ------------- | ------------- | ------------ | -------------- | ------------ |
+| I001          | Flour         | Grain        | E001           | $1.99        |
+| I002          | Tomatoes      | Vegetable    | E002           | $2.49        |
+| I003          | Cheese        | Dairy        | E002           | $3.99        |
 
 
 | Dishes        |            |             |
 | ------------- | ---------- | ----------- |
-| DishID        | DishName    | Price      |
+| DishID        | DishName   | Price       |
 | ------------- | ---------- | ----------- |
-| D001          | Pizza       | $10.00     |
-| D002          | Salad       | $8.50      |
+| D001          | Pizza      | $10.00      |
+| D002          | Salad      | $8.50       |
 
 
 
