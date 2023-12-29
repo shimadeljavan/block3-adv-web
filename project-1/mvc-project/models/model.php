@@ -95,5 +95,33 @@ class dishModel {
             return false;
         }
     }
+
+
+
+    // natural join
+
+    public function naturalJoinDishesWithVendors() {
+        $sql = "SELECT * FROM dishes NATURAL JOIN foodVendor";
+       
+        $result = $this->connect()->query($sql);
+
+        if ($result === false) {
+            return false;
+        }
+    
+        $rows = [];
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+    
+        return $rows;
+    }
+
+    //end
 }
+
+
+
+
+
 ?>

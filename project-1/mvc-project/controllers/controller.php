@@ -3,8 +3,10 @@
 
     class Controller {
         private $dish;
+        private $ingredient;
         public function __construct($connection) {
             $this->dish = new dishModel($connection);
+            // $this->ingredient = new ingredientModel($connection);
         }
         public function showDish() {
             $dishs = $this->dish->selectDish();
@@ -74,10 +76,16 @@
         $this->showDish();
     }
 
-}
-    
 
-    include_once 'controllers/connection.php';
-    $connection = new connectionObject($host, $username, $password, $database);
-    $controller = new Controller($connection);
+
+//natural join
+public function showDishWithVendors() {
+    $dishesWithVendors = $this->dish->naturalJoinDishesWithVendors();
+    include 'views/food_vendor.php'; 
+}
+
+//end
+    }
+
 ?>
+

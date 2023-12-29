@@ -81,20 +81,38 @@
 <a class="btn-back" href="?action=home">Back</a>
 <?php
 
-echo '<div class="grid-container">';
+//echo '<div class="grid-container">';
 
-if ($dishs) {
-    foreach ($dishs as $dish) {
+//if ($dishs) {
+    //foreach ($dishs as $dish) {
         // echo '<p>' . $dish['dishID'] . ' ' . $dish['dishName'] . ' $' . $dish['price'] . '</p>';
        // echo '<p>' . $dish['dishID'] . ' ' . $dish['dishName'] . ' $' . $dish['price'] . ' <a href="?action=edit&dishID=' . $dish['dishID'] . '">Edit</a></p>';
-       echo '<p>' . $dish['dishID'] . ' ' . $dish['dishName'] . ' $' . $dish['price'] . ' <a class="btn-edit" href="?action=edit&dishID=' . $dish['dishID'] . '">Edit</a> <a class="btn-delete" href="?action=delete&dishID=' . $dish['dishID'] . '">Delete</a></p>';
+//        echo '<p>' . $dish['dishID'] . ' ' . $dish['dishName'] . ' $' . $dish['price'] . ' <a class="btn-edit" href="?action=edit&dishID=' . $dish['dishID'] . '">Edit</a> <a class="btn-delete" href="?action=delete&dishID=' . $dish['dishID'] . '">Delete</a></p>';
 
+//     }
+// } else {
+//     echo '<p>No dish found</p>';
+// }
+
+// echo '</div>';
+
+//new code////////////////////////////
+echo '<div class="grid-container">';
+if ($dishs) {
+    foreach ($dishs as $dish) {
+        echo '<p>' . 
+            'Dish ID: ' . $dish['dishID'] . '<br>' . 
+            'Dish Name: ' . $dish['dishName'] . '<br>' . 
+            'Price: $' . $dish['price'] . '<br>' . 
+            '<a class="btn-edit" href="?action=edit&dishID=' . $dish['dishID'] . '">Edit</a> ' . 
+            '<a class="btn-delete" href="?action=delete&dishID=' . $dish['dishID'] . '">Delete</a>' . 
+            '</p>';
     }
 } else {
-    echo '<p>No dish found</p>';
+    echo '<p>No dishes found</p>';
 }
-
 echo '</div>';
+
 ?>
     
 </body>
