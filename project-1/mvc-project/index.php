@@ -69,16 +69,30 @@
     </style>
 <body>
     <h1>MVC project!</h1>
-    <a class="btn-vendor" href="?action=showDishWithVendors">Vendor</a>
-    <!-- <a class="btn-vendor" href="?action=showAddIngredientForm">Add Ingredient</a> -->
+    <a class="btn-vendor" href="?action=showDishWithVendors">Vendor jion dish</a>
+    <a class="btn-vendor" href="?action=showIngredients">View Ingredients</a>
+    <a class="btn-vendor" href="?action=showSuppliers">View Suppliers</a>
+
     <?php
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
+
         include_once("controllers/controller.php");
+        include_once ("controllers/Ingredient_controller.php");
+        include_once ("controllers/controller_supplier.php");
+
+        include_once 'models/model_supplier.php';
+        // include_once 'controllers/supplier_controller.php';
         
         $connection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
         $controller = new Controller($connection);
+        
+        $ingredientConnection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
+        $ingredientController = new IngredientController($ingredientConnection);
+
+        $supplierConnection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
+        $supplierController = new SupplierController($supplierConnection);
 
         $action = isset($_GET['action']) ? $_GET['action'] : '';
 
@@ -127,53 +141,93 @@
                     break;
                 //end
 
-                ////add new ingredient
 
-                // case 'showIngredientsList':
-                //     $controller->showIngredientsList();
-                //     break;
-        
-                // case 'showAddIngredientForm':
-                //     $controller->showAddIngredientForm();
-                //     break;
-        
-                // case 'addIngredient':
-                //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                //         $controller->addIngredient();
-                //     } else {
-                //         echo "<p>Error: Invalid request method for adding ingredient.</p>";
-                //     }
-                //     break;
-        
-                // case 'showDeleteIngredientForm':
-                //     $ingredientID = isset($_GET['ingredientID']) ? $_GET['ingredientID'] : '';
-                //     if ($ingredientID) {
-                //         $controller->showDeleteIngredientForm($ingredientID);
-                //     } else {
-                //         echo "<p>Error: Ingredient ID not provided for deletion.</p>";
-                //     }
-                //     break;
-        
-                // case 'deleteIngredient':
-                //     $ingredientID = isset($_POST['ingredientID']) ? $_POST['ingredientID'] : '';
-                //     if ($ingredientID) {
-                //         $controller->deleteIngredient($ingredientID);
-                //     } else {
-                //         echo "<p>Error: Ingredient ID not provided for deletion.</p>";
-                //     }
-                //     break;
-        
 
-                //////end
 
-            default:
-                if (isset($_POST['submit'])) {
-                    $controller->add();
-                } else {
-                    $controller->showForm();
+                
+
+
+                        ///////////////////ingredients/////////////////////
+                        case 'showIngredients':
+                            // Show the list of ingredients
+                            $ingredientController->showIngredients();
+                            break;
+
+                            case 'showIngredientForm':
+                                // Show the form for adding a new ingredient
+                                $ingredientController->showIngredientForm();
+                                break;
+
+                            case 'addIngredient':
+                                    $ingredientController->addIngredient();
+                                break;
+
+                            case 'deleteIngredient':
+                                    $ingredientID = isset($_GET['ingredientID']) ? $_GET['ingredientID'] : '';
+                                    $ingredientController->deleteIngredient($ingredientID);
+                                break;
+
+                                case 'confirm_deleteIngredient':
+                                    $ingredientID = isset($_GET['ingredientID']) ? $_GET['ingredientID'] : '';
+                                    $ingredientController->confirm_deleteIngredient($ingredientID);
+                                break;
+
+              
+                        //////////////////////////end of ingredients///////////////
+
+
+                        ///////////////////suppliers/////////////////////
+
+
+                        case 'showSuppliers':
+                            // Show the list of suppliers
+                            $supplierController->showSuppliers();
+                            break;
+
+                            case 'showSupplierForm':
+                                // Show the form for adding a new supplier
+                                $supplierController->showSupplierForm();
+                                break;
+                                
+                            case 'addSupplier':
+                                    $supplierController->addSupplier();
+                                break;
+                        
+                            case 'deleteSupplier':
+                                    $supplierID = isset($_GET['supplierID']) ? $_GET['supplierID'] : '';
+                                    $supplierController->deleteSupplier($supplierID);
+                                break;
+
+                                case 'confirm_deleteSupplier':
+                                    $supplierID = isset($_GET['supplierID']) ? $_GET['supplierID'] : '';
+                                    $supplierController->confirm_deleteSupplier($supplierID);
+                                break;
+                            
+
+                                //////////////////////////end of suppliers///////////////
+    
+                default:
+                    if (isset($_POST['submit'])) {
+                        $controller->add();
+                    } else {
+                        $controller->showForm();
+                    }
+                    break;
+            
                 }
-                break;
-        }
+
+
+
+
+
+            // default:
+            //     if (isset($_POST['submit'])) {
+            //         $controller->add();
+            //     } else {
+            //         $controller->showForm();
+            //     }
+            //     break;
+        // }
 
         //$controller->showDish();
     ?>

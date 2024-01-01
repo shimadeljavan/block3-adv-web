@@ -3,10 +3,9 @@
 
     class Controller {
         private $dish;
-        private $ingredient;
+        // private $ingredient;
         public function __construct($connection) {
             $this->dish = new dishModel($connection);
-            // $this->ingredient = new ingredientModel($connection);
         }
         public function showDish() {
             $dishs = $this->dish->selectDish();
@@ -16,8 +15,11 @@
             include 'views/form.php';
         }
         public function add() {
-            $dishName = $_POST['dishName'];
-            $price = $_POST['price'];
+            // $dishName = $_POST['dishName'];
+            // $price = $_POST['price'];
+            $dishID = isset($_POST['dishID']) ? $_POST['dishID'] : '';
+            $dishName = isset($_POST['dishName']) ? $_POST['dishName'] : '';
+            $price = isset($_POST['price']) ? $_POST['price'] : '';
             if(!$dishName) {
                 echo "<p>Missing information</p>";
                 $this->showForm();
