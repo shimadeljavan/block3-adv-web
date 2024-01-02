@@ -83,6 +83,7 @@
         include_once ("controllers/controller_supplier.php");
 
         include_once 'models/model_supplier.php';
+        include_once 'models/model_ingredient.php';
         // include_once 'controllers/supplier_controller.php';
         
         $connection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
@@ -141,20 +142,12 @@
                     break;
                 //end
 
-
-
-
-                
-
-
                         ///////////////////ingredients/////////////////////
                         case 'showIngredients':
-                            // Show the list of ingredients
                             $ingredientController->showIngredients();
                             break;
 
                             case 'showIngredientForm':
-                                // Show the form for adding a new ingredient
                                 $ingredientController->showIngredientForm();
                                 break;
 
@@ -164,38 +157,38 @@
 
                             case 'deleteIngredient':
                                     $ingredientID = isset($_GET['ingredientID']) ? $_GET['ingredientID'] : '';
-                                    $ingredientController->deleteIngredient($ingredientID);
-                                break;
+                                    if ($ingredientID) {
+                                        $ingredientController->deleteIngredient($ingredientID);
+                                    } else {
+                                        echo "<p>Error: Ingredient ID not provided for deletion.</p>";
+                                    }
+                                    break;
 
                                 case 'confirm_deleteIngredient':
                                     $ingredientID = isset($_GET['ingredientID']) ? $_GET['ingredientID'] : '';
                                     $ingredientController->confirm_deleteIngredient($ingredientID);
-                                break;
-
-              
+                                break;              
                         //////////////////////////end of ingredients///////////////
-
-
                         ///////////////////suppliers/////////////////////
-
-
                         case 'showSuppliers':
-                            // Show the list of suppliers
                             $supplierController->showSuppliers();
                             break;
 
                             case 'showSupplierForm':
-                                // Show the form for adding a new supplier
                                 $supplierController->showSupplierForm();
                                 break;
                                 
                             case 'addSupplier':
                                     $supplierController->addSupplier();
                                 break;
-                        
+
                             case 'deleteSupplier':
-                                    $supplierID = isset($_GET['supplierID']) ? $_GET['supplierID'] : '';
+                                $supplierID = isset($_GET['supplierID']) ? $_GET['supplierID'] : '';
+                                if ($supplierID) {
                                     $supplierController->deleteSupplier($supplierID);
+                                } else {
+                                    echo "<p>Error: Supplier ID not provided for deletion.</p>";
+                                }
                                 break;
 
                                 case 'confirm_deleteSupplier':

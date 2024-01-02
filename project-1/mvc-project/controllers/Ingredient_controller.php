@@ -1,5 +1,4 @@
 <?php
-include_once 'models/model_ingredient.php';
 
 class IngredientController {
     private $ingredient;
@@ -16,8 +15,6 @@ class IngredientController {
     public function showIngredientForm() {
         include 'views/ingredient_form.php';
     }
-
-    
 
     public function addIngredient() {
         $ingredientName = $_POST['ingredientName'];
@@ -50,13 +47,12 @@ class IngredientController {
     }
 
     public function confirm_deleteIngredient($ingredientID) {
-        $ingredient = $this->ingredient->getIngredientByID($ingredientID);
-        if ($ingredient) {
-            include 'views/ingredient_confirm_delete.php';
+        if ($this->ingredient->deleteIngredient($ingredientID)) {
+            echo "<p>this Ingredient ID : $ingredientID deleted successfully</p>";
         } else {
-            echo "<p>Ingredient not found</p>";
-            $this->showIngredients();
+            echo "<p>Could not delete ingredient</p>";
         }
-    }
+        $this->showIngredients();
+        }
 }
 ?>

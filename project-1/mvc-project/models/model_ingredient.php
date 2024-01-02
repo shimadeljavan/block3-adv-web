@@ -63,6 +63,18 @@ class IngredientModel {
         }
     }
 
+    public function getIngredientByID($ingredientID) {
+        $mysqli = $this->connect();
+        if ($mysqli) {
+            $result = $mysqli->query("SELECT * FROM ingredients WHERE ingredientID='$ingredientID'");
+            $ingredient = $result->fetch_assoc();
+            $mysqli->close();
+            return $ingredient;
+        } else {
+            return false;
+        }
+    }
+
     public function deleteIngredient($ingredientID) {
         $mysqli = $this->connect();
 
@@ -82,23 +94,7 @@ class IngredientModel {
     }
     
 
-    public function getIngredientByID($ingredientID) {
-        $mysqli = $this->connect();
-
-        if ($mysqli) {
-            $result = $mysqli->query("SELECT * FROM ingredients WHERE ingredientID='$ingredientID'");
-         if (!$result) {
-                error_log('Error in getIngredientByID method: ' . $mysqli->error);
-                return false;
-            }
-
-            $ingredient = $result->fetch_assoc();
-            $mysqli->close();
-            return $ingredient;
-        } else {
-            return false;
-        }
-    }
+  
  
 }
 

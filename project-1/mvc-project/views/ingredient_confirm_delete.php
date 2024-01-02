@@ -16,7 +16,7 @@
         <p><strong>Type:</strong> <?php echo $ingredient['type']; ?></p>
         <p><strong>Price:</strong> <?php echo $ingredient['price']; ?></p>
 
-        <form method="post" action="?action=confirm_deleteIngredient">
+        <form method="post" action="?action=deleteIngredient">
             <input type="hidden" name="ingredientID" value="<?php echo $ingredient['ingredientID']; ?>">
             <input type="submit" name="submit" value="Confirm Deletion">
         </form>

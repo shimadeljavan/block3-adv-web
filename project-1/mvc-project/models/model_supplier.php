@@ -63,6 +63,18 @@ class SupplierModel {
         }
     }
 
+    public function getSupplierByID($supplierID) {
+        $mysqli = $this->connect();
+        if ($mysqli) {
+            $result = $mysqli->query("SELECT * FROM sppliers WHERE supplierID='$supplierID'");
+            $supplier = $result->fetch_assoc();
+            $mysqli->close();
+            return $supplier;
+        } else {
+            return false;
+        }
+    }
+
     public function deleteSupplier($supplierID) {
         $mysqli = $this->connect();
     
@@ -70,7 +82,6 @@ class SupplierModel {
             $result = $mysqli->query("DELETE FROM sppliers WHERE supplierID='$supplierID'");
     
             if (!$result) {
-                // Log or display an error message
                 error_log("Error deleting supplier: " . $mysqli->error);
                 return false;
             }
@@ -83,25 +94,8 @@ class SupplierModel {
     }
     
 
-    public function getSupplierByID($supplierID) {
-        $mysqli = $this->connect();
+
     
-        if ($mysqli) {
-            $result = $mysqli->query("SELECT * FROM sppliers WHERE supplierID='$supplierID'");
-    
-            if (!$result) {
-                // Log or display an error message
-                error_log("Error in getSupplierByID: " . $mysqli->error);
-                return null;
-            }
-    
-            $supplier = $result->fetch_assoc();
-            $mysqli->close();
-            return $supplier;
-        } else {
-            return null;
-        }
-    }
 }
 
 ?>

@@ -8,26 +8,18 @@
 <body>
 
 <h2>Delete Ingredient Confirmation</h2>
+<p style="color: red;">Are you sure you want to delete the following ingredient?</p>
+<p><strong>Ingredient ID:</strong> <?php echo $ingredient['ingredientID']; ?></p>
+<p><strong>Ingredient Name:</strong> <?php echo $ingredient['ingredientName']; ?></p>
+<p><strong>Type:</strong> <?php echo $ingredient['type']; ?></p>
+<p><strong>Price:</strong> $<?php echo $ingredient['price']; ?></p>
 
-<?php if (isset($ingredient)): ?>
-    <p>Are you sure you want to delete the following ingredient?</p>
-    <p><strong>Ingredient ID:</strong> <?php echo $ingredient['ingredientID']; ?></p>
-    <p><strong>Ingredient Name:</strong> <?php echo $ingredient['ingredientName']; ?></p>
-    <p><strong>Type:</strong> <?php echo $ingredient['type']; ?></p>
-    <p><strong>Price:</strong> $<?php echo $ingredient['price']; ?></p>
+<p><strong>ID:</strong> <?php echo $ingredient['ingredientID']; ?></p>
 
-    <form action="?action=confirm_delete&ingredientID=<?php echo $ingredient['ingredientID']; ?>" method="post">
+<form method="post" action="?action=confirm_deleteIngredient&ingredientID=<?php echo $ingredient['ingredientID']; ?>">
         <input type="hidden" name="ingredientID" value="<?php echo $ingredient['ingredientID']; ?>">
-        <input type="hidden" name="ingredientID" value="<?php echo $ingredient['ingredientID']; ?>">
-        <input type="submit" value="Confirm Delete">
+        <input type="submit" name="submit" value="Confirm Delete">
+        <a href="?action=showIngredients">Cancel</a>
     </form>
-
-    <p><a href="index.php">Cancel</a></p>
-<?php else: ?>
-    <p>Error: Ingredient details not available.</p>
-    <a href="index.php">Go back</a>
-<?php endif; ?>
-
 </body>
 </html>
-

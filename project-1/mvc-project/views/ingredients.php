@@ -43,7 +43,6 @@
                 <td><?php echo $ingredient['type']; ?></td>
                 <td><?php echo $ingredient['price']; ?> $</td>
                 <td>
-                    <!-- <a href="?action=editIngredient&ingredientID=<?php echo $ingredient['ingredientID']; ?>">Edit</a> | -->
                     <a href="?action=deleteIngredient&ingredientID=<?php echo $ingredient['ingredientID']; ?>">Delete</a>
                 </td>
             </tr>

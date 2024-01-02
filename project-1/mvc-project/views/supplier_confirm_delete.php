@@ -9,12 +9,15 @@
 <body>
     <h2>Confirm Supplier Deletion</h2>
 
+
     <?php if (isset($supplier)): ?>
         <p>You are about to delete the following supplier:</p>
         <p><strong>Supplier ID:</strong> <?php echo $supplier['supplierID']; ?></p>
         <p><strong>Name:</strong> <?php echo $supplier['supplierName']; ?></p>
         <p><strong>Address:</strong> <?php echo $supplier['address']; ?></p>
         <p><strong>Contact Number:</strong> <?php echo $supplier['contactNumber']; ?></p>
+
+        <!-- <form method="post" action="?action=confirm_deleteSupplier&supplierID=<?php echo $supplier['supplierID']; ?>"> -->
 
         <form method="post" action="?action=confirm_deleteSupplier">
             <input type="hidden" name="supplierID" value="<?php echo $supplier['supplierID']; ?>">

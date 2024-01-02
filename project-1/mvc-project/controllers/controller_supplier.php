@@ -31,7 +31,8 @@ class SupplierController {
         }
         $this->showSuppliers();
     }
-    
+
+     
 
     public function deleteSupplier($supplierID) {
         $supplier = $this->supplier->getSupplierByID($supplierID);
@@ -44,13 +45,12 @@ class SupplierController {
     }
 
     public function confirm_deleteSupplier($supplierID) {
-        $supplier = $this->supplier->getSupplierByID($supplierID);
-        if ($supplier) {
-            include 'views/supplier_confirm_delete.php';
+        if ($this->supplier->deleteSupplier($supplierID)) {
+            echo "<p>this Supplier ID : $supplierID deleted successfully</p>";
         } else {
-            echo "<p>Supplier not found</p>";
-            $this->showSuppliers();
+            echo "<p>Could not delete supplier</p>";
         }
+        $this->showSuppliers();
     }
 }
 
