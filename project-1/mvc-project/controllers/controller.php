@@ -41,7 +41,7 @@
             include 'views/edit_form.php'; 
         } else {
             echo "<p>Dish not found</p>";
-            $this->showDish();
+            // $this->showDish();
         }
     }
 
@@ -63,7 +63,7 @@
             include 'views/delete_form.php';
         } else {
             echo "<p>Dish not found</p>";
-            $this->showDish();
+            // $this->showDish();
         }
 
     }
@@ -85,7 +85,6 @@ public function showDishWithVendors() {
     $dishesWithVendors = $this->dish->naturalJoinDishesWithVendors();
     include 'views/food_vendor.php'; 
 }
-
 //end
     }
 

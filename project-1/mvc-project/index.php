@@ -69,9 +69,11 @@
     </style>
 <body>
     <h1>MVC project!</h1>
-    <a class="btn-vendor" href="?action=showDishWithVendors">Vendor jion dish</a>
+    <a class="btn-vendor" href="?action=showDishWithVendors">View All INFO Join Table</a>
     <a class="btn-vendor" href="?action=showIngredients">View Ingredients</a>
     <a class="btn-vendor" href="?action=showSuppliers">View Suppliers</a>
+    <a class="btn-vendor" href="?action=showFoodVendors">View Food Vendors</a>
+    <a class="btn-vendor" href="?action=showDish">list dishes</a>
 
     <?php
     ini_set('display_errors', 1);
@@ -81,10 +83,11 @@
         include_once("controllers/controller.php");
         include_once ("controllers/Ingredient_controller.php");
         include_once ("controllers/controller_supplier.php");
-
+        include_once ("controllers/food_vendor_controller.php");
         include_once 'models/model_supplier.php';
         include_once 'models/model_ingredient.php';
-        // include_once 'controllers/supplier_controller.php';
+        include_once 'models/food_vendor_model.php';
+        
         
         $connection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
         $controller = new Controller($connection);
@@ -94,6 +97,9 @@
 
         $supplierConnection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
         $supplierController = new SupplierController($supplierConnection);
+
+        $foodVendorConnection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
+        $foodVendorController = new FoodVendorController($foodVendorConnection);
 
         $action = isset($_GET['action']) ? $_GET['action'] : '';
 
@@ -135,6 +141,13 @@
                     echo "<p>Error: Form not submitted for deletion confirmation.</p>";
                 }
                 break;
+
+            case 'showDish':
+                $controller->showDish();
+                break;
+
+       
+
 
                 //add new vendor 
                 case 'showDishWithVendors':
@@ -195,9 +208,31 @@
                                     $supplierID = isset($_GET['supplierID']) ? $_GET['supplierID'] : '';
                                     $supplierController->confirm_deleteSupplier($supplierID);
                                 break;
-                            
-
                                 //////////////////////////end of suppliers///////////////
+
+                                //////////////////foodvendors/////////////////////
+                                case 'showFoodVendors':
+                                    $foodVendorController->index();
+                                    break;
+                                
+                                case 'showFoodVendorForm':
+                                    $foodVendorController->showFoodVendorForm();
+                                    break;
+
+                                    case 'createFoodVendor':
+                                        $foodVendorController->createFoodVendor();
+                                        break;
+                                
+                                case 'deleteFoodVendor':
+                                    $foodVendorID = isset($_GET['foodVendorID']) ? $_GET['foodVendorID'] : '';
+                                    if ($foodVendorID) {
+                                        $foodVendorController->deleteFoodVendor($foodVendorID);
+                                    }else {
+                                        echo "<p>Error: foodVendor ID not provided for deletion.</p>";
+                                    }
+                                    break;
+
+                                
     
                 default:
                     if (isset($_POST['submit'])) {
@@ -222,7 +257,7 @@
             //     break;
         // }
 
-        //$controller->showDish();
+        // $controller->showDish();
     ?>
 </body>
 </html>

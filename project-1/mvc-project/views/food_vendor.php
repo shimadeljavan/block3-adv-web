@@ -50,6 +50,8 @@
     <a class="btn-back" href="?action=home">Back</a>
     
     <?php
+
+
     echo '<div class="grid-container">';
     if ($dishesWithVendors) {
         foreach ($dishesWithVendors as $dish) {

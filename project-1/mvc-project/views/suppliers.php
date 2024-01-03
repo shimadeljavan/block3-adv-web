@@ -4,6 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suppliers List</title>
+    <style>
+          table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .btn-add {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .btn-add:hover {
+            background-color: #3e8e41;
+        }
+
+        .btn-delete {
+            display: inline-block;
+            padding: 2px;
+            background-color: red;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .btn-delete:hover {
+            background-color: darkred;
+        }
+    </style>
 </head>
 <body>
 
@@ -27,14 +69,14 @@
                     <td><?php echo $supplier['address']; ?></td>
                     <td><?php echo $supplier['contactNumber']; ?></td>
                     <td>
-                        <a href="?action=deleteSupplier&supplierID=<?php echo $supplier['supplierID']; ?>">Delete</a>
+                        <a class="btn-delete" href="?action=deleteSupplier&supplierID=<?php echo $supplier['supplierID']; ?>">Delete</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
 
-    <p><a href="?action=showSupplierForm">Add New Supplier</a></p>
+    <p><a class="btn-add" href="?action=showSupplierForm">Add New Supplier</a></p>
 
 </body>
 </html>

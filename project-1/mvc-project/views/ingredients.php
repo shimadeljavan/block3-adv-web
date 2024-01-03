@@ -19,6 +19,32 @@
         th {
             background-color: #f2f2f2;
         }
+
+        .btn-add {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .btn-add:hover {
+            background-color: #3e8e41;
+        }
+
+        .btn-delete {
+            display: inline-block;
+            padding: 2px;
+            background-color: red;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .btn-delete:hover {
+            background-color: darkred;
+        }
     </style>
 </head>
 <body>
@@ -43,14 +69,14 @@
                 <td><?php echo $ingredient['type']; ?></td>
                 <td><?php echo $ingredient['price']; ?> $</td>
                 <td>
-                    <a href="?action=deleteIngredient&ingredientID=<?php echo $ingredient['ingredientID']; ?>">Delete</a>
+                    <a class="btn-delete" href="?action=deleteIngredient&ingredientID=<?php echo $ingredient['ingredientID']; ?>">Delete</a>
                 </td>
             </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
 
-<p><a href="?action=showIngredientForm">Add New Ingredient</a></p>
+<p><a class="btn-add" href="?action=showIngredientForm">Add New Ingredient</a></p>
 
 </body>
 </html>

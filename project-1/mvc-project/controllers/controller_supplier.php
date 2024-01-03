@@ -32,8 +32,6 @@ class SupplierController {
         $this->showSuppliers();
     }
 
-     
-
     public function deleteSupplier($supplierID) {
         $supplier = $this->supplier->getSupplierByID($supplierID);
         if ($supplier) {

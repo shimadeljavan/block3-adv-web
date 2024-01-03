@@ -97,7 +97,6 @@ class dishModel {
     }
 
 
-
     // natural join
 
     public function naturalJoinDishesWithVendors() {
@@ -119,9 +118,6 @@ class dishModel {
 
     //end
 }
-
-
-
 
 
 ?>
