@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Ingredient</title>
+    <style>
+        .btn-vendor {
+            
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+
+        }
+
+        .btn-vendor:hover {
+            background-color: #3e8e41;
+        }
+        </style>
 </head>
 <body>
 
@@ -23,7 +40,7 @@
 </form>
 
 
-<p><a href="index.php">Back to Ingredient List</a></p>
+<p><a class="btn-vendor" href="?action=showIngredients">Back to Ingredient List</a></p>
 
 </body>
 </html>

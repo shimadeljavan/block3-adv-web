@@ -20,6 +20,20 @@
         th {
             background-color: #f2f2f2;
         }
+
+        .btn-add {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 40px;
+        }
+
+        .btn-add:hover {
+            background-color: #3e8e41;
+        }
     </style>
 </head>
 <body>
@@ -54,7 +68,7 @@
     }
     ?>
 
-    <a href="?action=showFoodVendorForm">Add New Food Vendor</a>
+    <a class="btn-vendor" href="?action=showFoodVendorForm">Add New Food Vendor</a>
 </body>
 </html>
 

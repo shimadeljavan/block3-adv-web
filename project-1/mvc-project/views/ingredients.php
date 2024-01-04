@@ -45,6 +45,21 @@
         .btn-delete:hover {
             background-color: darkred;
         }
+
+        .btn-add-vendor {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .btn-add-vendor:hover {
+            background-color: #3e8e41;
+            
+        }
     </style>
 </head>
 <body>
@@ -76,7 +91,7 @@
     </tbody>
 </table>
 
-<p><a class="btn-add" href="?action=showIngredientForm">Add New Ingredient</a></p>
+<p><a class="btn-add-vendor" href="?action=showIngredientForm">Add New Ingredient</a></p>
 
 </body>
 </html>

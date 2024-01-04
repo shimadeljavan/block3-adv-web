@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Supplier</title>
+    <style>
+        .btn-s {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+
+        }
+
+        .btn-s:hover {
+            background-color: #3e8e41;
+
+        }
+     </style>
 </head>
 <body>
 
@@ -22,7 +39,7 @@
         <input type="submit" name="submit" value="Add Supplier">
     </form>
 
-    <p><a href="?action=showSuppliers">Back to Suppliers List</a></p>
+    <p><a class="btn-s" href="?action=showSuppliers">Back to Suppliers List</a></p>
 
 </body>
 </html>

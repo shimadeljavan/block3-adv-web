@@ -78,7 +78,7 @@
 </head>
 <body>
 <h1>List of Dish</h1>
-<a class="btn-back" href="?action=home">Back</a>
+<a class="btn-back" href="?action=home">Add New Dish</a>
 <?php
 
 //echo '<div class="grid-container">';

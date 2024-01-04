@@ -73,7 +73,7 @@
     <a class="btn-vendor" href="?action=showIngredients">View Ingredients</a>
     <a class="btn-vendor" href="?action=showSuppliers">View Suppliers</a>
     <a class="btn-vendor" href="?action=showFoodVendors">View Food Vendors</a>
-    <a class="btn-vendor" href="?action=showDish">list dishes</a>
+    <a class="btn-vendor" href="?action=showDish">List of Dishes</a>
 
     <?php
     ini_set('display_errors', 1);
