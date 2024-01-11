@@ -1,4 +1,6 @@
 <?php
+$connection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
+require_once 'models/food_vendor_model.php';
 class FoodVendorController {
     private $foodVendorModel;
 
@@ -73,4 +75,26 @@ class FoodVendorController {
     }
 
 }
+
+$connection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
+$foodVendorController = new FoodVendorController($connection);
+
+if ($action === 'showFoodVendorForm') {
+        $foodVendorController->showFoodVendorForm();
+    } elseif ($action === 'showFoodVendors') {
+        $foodVendorController->showFoodVendors();
+    } elseif ($action === 'createFoodVendor') {
+        $foodVendorController->createFoodVendor();
+    } elseif ($action === 'deleteFoodVendor') {
+        $foodVendorID = isset($_GET['foodVendorID']) ? $_GET['foodVendorID'] : '';
+        if ($foodVendorID) {
+            $foodVendorController->deleteFoodVendor($foodVendorID);
+        } else {
+            echo "<p>Error: foodVendor ID not provided for deletion.</p>";
+        }
+    }
+
+
+
+
 ?>

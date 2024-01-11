@@ -69,195 +69,126 @@
     </style>
 <body>
     <h1>MVC project!</h1>
-    <a class="btn-vendor" href="?action=showDishWithVendors">View All INFO Join Table</a>
-    <a class="btn-vendor" href="?action=showIngredients">View Ingredients</a>
-    <a class="btn-vendor" href="?action=showSuppliers">View Suppliers</a>
-    <a class="btn-vendor" href="?action=showFoodVendors">View Food Vendors</a>
-    <a class="btn-vendor" href="?action=showDish">List of Dishes</a>
-
-    <?php
+        <a class="btn-vendor" href="?action=showDishWithVendors">View All INFO Join Table</a>
+        <a class="btn-vendor" href="?action=showIngredients">View Ingredients</a>
+        <a class="btn-vendor" href="?action=showSuppliers">View Suppliers</a>
+        <a class="btn-vendor" href="?action=showFoodVendorForm">Add Food Vendors</a>
+        <a class="btn-vendor" href="?action=showFoodVendors">View Food Vendors</a>
+        <a class="btn-vendor" href="?action=showDish">List of Dishes</a>
+        <?php
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 
-        include_once("controllers/controller.php");
-        include_once ("controllers/Ingredient_controller.php");
-        include_once ("controllers/controller_supplier.php");
-        include_once ("controllers/food_vendor_controller.php");
-        include_once 'models/model_supplier.php';
-        include_once 'models/model_ingredient.php';
-        include_once 'models/food_vendor_model.php';
-        
-        
-        $connection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
-        $controller = new Controller($connection);
-        
-        $ingredientConnection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
-        $ingredientController = new IngredientController($ingredientConnection);
+    include_once 'controllers/controller_main.php';
+    // include_once("controllers/controller.php");
+    // include_once("controllers/Ingredient_controller.php");
+    // include_once("controllers/controller_supplier.php");
+    // include_once("controllers/food_vendor_controller.php");
+    include_once 'models/model_supplier.php';
+    include_once 'models/model_ingredient.php';
+    include_once 'models/food_vendor_model.php';
 
-        $supplierConnection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
-        $supplierController = new SupplierController($supplierConnection);
+    // $connection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
+    // $controller = new Controller($connection);
 
-        $foodVendorConnection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
-        $foodVendorController = new FoodVendorController($foodVendorConnection);
+    // $ingredientConnection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
+    // $ingredientController = new IngredientController($ingredientConnection);
 
-        $action = isset($_GET['action']) ? $_GET['action'] : '';
+    // $supplierConnection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
+    // $supplierController = new SupplierController($supplierConnection);
 
-        switch ($action) {
-            case 'edit':
-                $dishID = isset($_GET['dishID']) ? $_GET['dishID'] : '';
-                if ($dishID) {
-                    $controller->editForm($dishID);
-                } else {
-                    echo "<p>Error: Dish ID not provided for editing.</p>";
-                }
-                break;
+    // $foodVendorConnection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
+    // $foodVendorController = new FoodVendorController($foodVendorConnection);
 
-            case 'update':
-                if (isset($_POST['submit'])) {
-                    $dishID = $_POST['dishID'];
-                    $dishName = $_POST['dishName'];
-                    $price = $_POST['price'];
-                    $controller->update($dishID, $dishName, $price);
-                } else {
-                    echo "<p>Error: Form not submitted for update.</p>";
-                }
-                break;
+    // $action = isset($_GET['action']) ? $_GET['action'] : '';
 
-            case 'delete':
-                $dishID = isset($_GET['dishID']) ? $_GET['dishID'] : '';
-                if ($dishID) {
-                    $controller->deleteForm($dishID);
-                } else {
-                    echo "<p>Error: Dish ID not provided for deletion.</p>";
-                }
-                break;
-
-            case 'confirm_delete':
-                if (isset($_POST['submit'])) {
-                    $dishID = $_POST['dishID'];
-                    $controller->delete($dishID);
-                } else {
-                    echo "<p>Error: Form not submitted for deletion confirmation.</p>";
-                }
-                break;
-
-            case 'showDish':
-                $controller->showDish();
-                break;
-
-       
-
-
-                //add new vendor 
-                case 'showDishWithVendors':
-                    $controller->showDishWithVendors();
-                    break;
-                //end
-
-                        ///////////////////ingredients/////////////////////
-                        case 'showIngredients':
-                            $ingredientController->showIngredients();
-                            break;
-
-                            case 'showIngredientForm':
-                                $ingredientController->showIngredientForm();
-                                break;
-
-                            case 'addIngredient':
-                                    $ingredientController->addIngredient();
-                                break;
-
-                            case 'deleteIngredient':
-                                    $ingredientID = isset($_GET['ingredientID']) ? $_GET['ingredientID'] : '';
-                                    if ($ingredientID) {
-                                        $ingredientController->deleteIngredient($ingredientID);
-                                    } else {
-                                        echo "<p>Error: Ingredient ID not provided for deletion.</p>";
-                                    }
-                                    break;
-
-                                case 'confirm_deleteIngredient':
-                                    $ingredientID = isset($_GET['ingredientID']) ? $_GET['ingredientID'] : '';
-                                    $ingredientController->confirm_deleteIngredient($ingredientID);
-                                break;              
-                        //////////////////////////end of ingredients///////////////
-                        ///////////////////suppliers/////////////////////
-                        case 'showSuppliers':
-                            $supplierController->showSuppliers();
-                            break;
-
-                            case 'showSupplierForm':
-                                $supplierController->showSupplierForm();
-                                break;
-                                
-                            case 'addSupplier':
-                                    $supplierController->addSupplier();
-                                break;
-
-                            case 'deleteSupplier':
-                                $supplierID = isset($_GET['supplierID']) ? $_GET['supplierID'] : '';
-                                if ($supplierID) {
-                                    $supplierController->deleteSupplier($supplierID);
-                                } else {
-                                    echo "<p>Error: Supplier ID not provided for deletion.</p>";
-                                }
-                                break;
-
-                                case 'confirm_deleteSupplier':
-                                    $supplierID = isset($_GET['supplierID']) ? $_GET['supplierID'] : '';
-                                    $supplierController->confirm_deleteSupplier($supplierID);
-                                break;
-                                //////////////////////////end of suppliers///////////////
-
-                                //////////////////foodvendors/////////////////////
-                                case 'showFoodVendors':
-                                    $foodVendorController->index();
-                                    break;
-                                
-                                case 'showFoodVendorForm':
-                                    $foodVendorController->showFoodVendorForm();
-                                    break;
-
-                                    case 'createFoodVendor':
-                                        $foodVendorController->createFoodVendor();
-                                        break;
-                                
-                                case 'deleteFoodVendor':
-                                    $foodVendorID = isset($_GET['foodVendorID']) ? $_GET['foodVendorID'] : '';
-                                    if ($foodVendorID) {
-                                        $foodVendorController->deleteFoodVendor($foodVendorID);
-                                    }else {
-                                        echo "<p>Error: foodVendor ID not provided for deletion.</p>";
-                                    }
-                                    break;
-
-                                
-    
-                default:
-                    if (isset($_POST['submit'])) {
-                        $controller->add();
-                    } else {
-                        $controller->showForm();
-                    }
-                    break;
-            
-                }
-
-
-
-
-
-            // default:
-            //     if (isset($_POST['submit'])) {
-            //         $controller->add();
-            //     } else {
-            //         $controller->showForm();
-            //     }
-            //     break;
-        // }
-
-        // $controller->showDish();
-    ?>
+    // if ($action === 'edit') {
+    //     $dishID = isset($_GET['dishID']) ? $_GET['dishID'] : '';
+    //     if ($dishID) {
+    //         $controller->editForm($dishID);
+    //     } else {
+    //         echo "<p>Error: Dish ID not provided for editing.</p>";
+    //     }
+    // } elseif ($action === 'update') {
+    //     if (isset($_POST['submit'])) {
+    //         $dishID = $_POST['dishID'];
+    //         $dishName = $_POST['dishName'];
+    //         $price = $_POST['price'];
+    //         $controller->update($dishID, $dishName, $price);
+    //     } else {
+    //         echo "<p>Error: Form not submitted for update.</p>";
+    //     }
+    // } elseif ($action === 'delete') {
+    //     $dishID = isset($_GET['dishID']) ? $_GET['dishID'] : '';
+    //     if ($dishID) {
+    //         $controller->deleteForm($dishID);
+    //     } else {
+    //         echo "<p>Error: Dish ID not provided for deletion.</p>";
+    //     }
+    // } elseif ($action === 'confirm_delete') {
+    //     if (isset($_POST['submit'])) {
+    //         $dishID = $_POST['dishID'];
+    //         $controller->delete($dishID);
+    //     } else {
+    //         echo "<p>Error: Form not submitted for deletion confirmation.</p>";
+    //     }
+    // } elseif ($action === 'showDish') {
+    //     $controller->showDish();
+    // } elseif ($action === 'showDishWithVendors') {
+    //     $controller->showDishWithVendors();
+    // } elseif ($action === 'showIngredients') {
+    //     $ingredientController->showIngredients();
+    // } elseif ($action === 'showIngredientForm') {
+    //     $ingredientController->showIngredientForm();
+    // } elseif ($action === 'addIngredient') {
+    //     $ingredientController->addIngredient();
+    // } elseif ($action === 'deleteIngredient') {
+    //     $ingredientID = isset($_GET['ingredientID']) ? $_GET['ingredientID'] : '';
+    //     if ($ingredientID) {
+    //         $ingredientController->deleteIngredient($ingredientID);
+    //     } else {
+    //         echo "<p>Error: Ingredient ID not provided for deletion.</p>";
+    //     }
+    // } elseif ($action === 'confirm_deleteIngredient') {
+    //     $ingredientID = isset($_GET['ingredientID']) ? $_GET['ingredientID'] : '';
+    //     $ingredientController->confirm_deleteIngredient($ingredientID);
+    // } elseif ($action === 'showSuppliers') {
+    //     $supplierController->showSuppliers();
+    // } elseif ($action === 'showSupplierForm') {
+    //     $supplierController->showSupplierForm();
+    // } elseif ($action === 'addSupplier') {
+    //     $supplierController->addSupplier();
+    // } elseif ($action === 'deleteSupplier') {
+    //     $supplierID = isset($_GET['supplierID']) ? $_GET['supplierID'] : '';
+    //     if ($supplierID) {
+    //         $supplierController->deleteSupplier($supplierID);
+    //     } else {
+    //         echo "<p>Error: Supplier ID not provided for deletion.</p>";
+    //     }
+    // } elseif ($action === 'confirm_deleteSupplier') {
+    //     $supplierID = isset($_GET['supplierID']) ? $_GET['supplierID'] : '';
+    //     $supplierController->confirm_deleteSupplier($supplierID);
+    // } elseif ($action === 'showFoodVendors') {
+    //     $foodVendorController->index();
+    // } elseif ($action === 'showFoodVendorForm') {
+    //     $foodVendorController->showFoodVendorForm();
+    // } elseif ($action === 'createFoodVendor') {
+    //     $foodVendorController->createFoodVendor();
+    // } elseif ($action === 'deleteFoodVendor') {
+    //     $foodVendorID = isset($_GET['foodVendorID']) ? $_GET['foodVendorID'] : '';
+    //     if ($foodVendorID) {
+    //         $foodVendorController->deleteFoodVendor($foodVendorID);
+    //     } else {
+    //         echo "<p>Error: foodVendor ID not provided for deletion.</p>";
+    //     }
+    // } else {
+    //     if (isset($_POST['submit'])) {
+    //         $controller->add();
+    //     } else {
+    //         $controller->showForm();
+    //     }
+    // }
+?>
 </body>
 </html>

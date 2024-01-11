@@ -1,4 +1,6 @@
 <?php
+$connection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
+require_once 'models/model_ingredient.php';
 
 class IngredientController {
     private $ingredient;
@@ -55,4 +57,22 @@ class IngredientController {
         $this->showIngredients();
         }
 }
+ $ingredientController = new IngredientController($connection);
+if ($action === 'showIngredients') {
+        $ingredientController->showIngredients();
+    } elseif ($action === 'showIngredientForm') {
+        $ingredientController->showIngredientForm();
+    } elseif ($action === 'addIngredient') {
+        $ingredientController->addIngredient();
+    } elseif ($action === 'deleteIngredient') {
+        $ingredientID = isset($_GET['ingredientID']) ? $_GET['ingredientID'] : '';
+        if ($ingredientID) {
+            $ingredientController->deleteIngredient($ingredientID);
+        } else {
+            echo "<p>Error: Ingredient ID not provided for deletion.</p>";
+        }
+    } elseif ($action === 'confirm_deleteIngredient') {
+        $ingredientID = isset($_GET['ingredientID']) ? $_GET['ingredientID'] : '';
+        $ingredientController->confirm_deleteIngredient($ingredientID);
+    }
 ?>

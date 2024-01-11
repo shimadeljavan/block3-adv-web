@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Ingredient Confirmation</title>
+    <title>Delete Supplier Confirmation</title>
 </head>
 <body>
 
-<h2>Delete Ingredient Confirmation</h2>
-<p style="color: red;">Are you sure you want to delete the following ingredient?</p>
-<p><strong>Ingredient ID:</strong> <?php echo $ingredient['ingredientID']; ?></p>
-<p><strong>Ingredient Name:</strong> <?php echo $ingredient['ingredientName']; ?></p>
-<p><strong>Type:</strong> <?php echo $ingredient['type']; ?></p>
-<p><strong>Price:</strong> $<?php echo $ingredient['price']; ?></p>
+<h2>Delete Supplier Confirmation</h2>
+<p style="color: red;">Are you sure you want to delete the following supplier?</p>
+<p><strong>Supplier ID:</strong> <?php echo $supplier['supplierID']; ?></p>
+<p><strong>Supplier Name:</strong> <?php echo $supplier['supplierName']; ?></p>
+<p><strong>Address:</strong> <?php echo $supplier['address']; ?></p>
+<p><strong>Contact Number:</strong> $<?php echo $supplier['contactNumber']; ?></p>
 
-<p><strong>ID:</strong> <?php echo $ingredient['ingredientID']; ?></p>
+<p><strong>ID:</strong> <?php echo $supplier['supplierID']; ?></p>
 
-<form method="post" action="?action=confirm_deleteIngredient&ingredientID=<?php echo $ingredient['ingredientID']; ?>">
-        <input type="hidden" name="ingredientID" value="<?php echo $ingredient['ingredientID']; ?>">
+<form method="post" action="?action=confirm_deleteSupplier&supplierID=<?php echo $supplier['supplierID']; ?>">
+        <input type="hidden" name="supplierID" value="<?php echo $supplier['supplierID']; ?>">
         <input type="submit" name="submit" value="Confirm Delete">
-        <a href="?action=showIngredients">Cancel</a>
+        <a href="?action=showSuppliers">Cancel</a>
     </form>
 </body>
 </html>

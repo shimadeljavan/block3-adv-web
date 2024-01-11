@@ -10,6 +10,6 @@
     <input type="text" name="price">
     </div>
     <div>
-    <input type="submit" name="submit" value="Add Dish">
+    <input type="submit" name="addDish" value="Add Dish">
     </div>
 </form>

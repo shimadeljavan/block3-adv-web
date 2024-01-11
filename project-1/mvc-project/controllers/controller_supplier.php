@@ -1,7 +1,10 @@
 <?php
 
+require_once 'models/model_supplier.php';
 class SupplierController {
     private $supplier;
+
+
 
     public function __construct($connection) {
         $this->supplier = new SupplierModel($connection);
@@ -35,6 +38,7 @@ class SupplierController {
     public function deleteSupplier($supplierID) {
         $supplier = $this->supplier->getSupplierByID($supplierID);
         if ($supplier) {
+        $supplier = $this->supplier->getSupplierByID($supplierID);    
             include 'views/supplier_delete.php';
         } else {
             echo "<p>Supplier not found</p>";
@@ -51,4 +55,24 @@ class SupplierController {
         $this->showSuppliers();
     }
 }
+$connection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
+$supplierController = new SupplierController($connection);
+if ($action === 'showSuppliers') {
+        $supplierController->showSuppliers();
+    } elseif ($action === 'showSupplierForm') {
+        $supplierController->showSupplierForm();
+    } elseif ($action === 'addSupplier') {
+        $supplierController->addSupplier();
+    } elseif ($action === 'deleteSupplier') {
+        $supplierID = isset($_GET['supplierID']) ? $_GET['supplierID'] : '';
+        if ($supplierID) {
+            $supplierController->deleteSupplier($supplierID);
+        } else {
+            echo "<p>Error: Supplier ID not provided for deletion.</p>";
+        }
+    } elseif ($action === 'confirm_deleteSupplier') {
+        $supplierID = isset($_GET['supplierID']) ? $_GET['supplierID'] : '';
+        $supplierController->confirm_deleteSupplier($supplierID);
+    }
+
 ?>

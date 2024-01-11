@@ -3,6 +3,7 @@
 
     class Controller {
         private $dish;
+        private $model;
         // private $ingredient;
         public function __construct($connection) {
             $this->dish = new dishModel($connection);
@@ -78,8 +79,6 @@
         $this->showDish();
     }
 
-
-
 //natural join
 public function showDishWithVendors() {
     $dishesWithVendors = $this->dish->naturalJoinDishesWithVendors();
@@ -87,6 +86,48 @@ public function showDishWithVendors() {
 }
 //end
     }
-
+    $connection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
+    $controller = new Controller($connection);
+    $action = isset($_GET['action']) ? $_GET['action'] : '';
+    if ($action === 'edit') {
+            $dishID = isset($_GET['dishID']) ? $_GET['dishID'] : '';
+            if ($dishID) {
+                $controller->editForm($dishID);
+            } else {
+                echo "<p>Error: Dish ID not provided for editing.</p>";
+            }
+        } elseif ($action === 'update') {
+            if (isset($_POST['submit'])) {
+                $dishID = $_POST['dishID'];
+                $dishName = $_POST['dishName'];
+                $price = $_POST['price'];
+                $controller->update($dishID, $dishName, $price);
+            } else {
+                echo "<p>Error: Form not submitted for update.</p>";
+            }
+        } elseif ($action === 'delete') {
+            $dishID = isset($_GET['dishID']) ? $_GET['dishID'] : '';
+            if ($dishID) {
+                $controller->deleteForm($dishID);
+            } else {
+                echo "<p>Error: Dish ID not provided for deletion.</p>";
+            }
+        } elseif ($action === 'confirm_delete') {
+            if (isset($_POST['submit'])) {
+                $dishID = $_POST['dishID'];
+                $controller->delete($dishID);
+            } else {
+                echo "<p>Error: Form not submitted for deletion confirmation.</p>";
+            }
+        } elseif ($action === 'showDish') {
+            $controller->showDish();
+        }elseif ($action === 'showDishWithVendors') {
+            $controller->showDishWithVendors();
+         }elseif(isset($_POST['addDish'])){
+                        $controller->add();        
+         }
+        elseif($action === 'home'){
+            $controller->showForm();
+        }
 ?>
 
