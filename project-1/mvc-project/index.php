@@ -4,191 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MVC with MySQL</title>
-    <style>
-        /* Your styles remain unchanged */
-    </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
-<style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #f5f5f5;
-            padding: 20px;
-        }
-
-        form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 12px;
-            box-sizing: border-box;
-        }
-
-        input[type="submit"] {
-            background-color: #4caf50;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #4caf50;
-        }
-
-        h2 {
-            color: #4caf50;     
-           }
-
-        p {
-            font-size: 20px;
-            color: black;
-            line-height: 1.5;
-        }
-        .btn-vendor {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #4caf50;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 4px;
-            margin-bottom: 20px;
-        }
-        .btn-vendor:hover {
-            background-color: #45a049;
-        }
-    </style>
 <body>
-    <h1>MVC project!</h1>
-        <a class="btn-vendor" href="?action=showDishWithVendors">View All INFO Join Table</a>
+    <div class="page">
+    <a class="logo" href="https://shima94.web582.com/block3-adv-web/project-1/mvc-project/index.php"><h1>MVC project!</h1></a>
+    <div class="grid-btn">
+        <a class="btn-vendor" href="?action=showDishWithVendors">View Join Table</a>
         <a class="btn-vendor" href="?action=showIngredients">View Ingredients</a>
         <a class="btn-vendor" href="?action=showSuppliers">View Suppliers</a>
-        <a class="btn-vendor" href="?action=showFoodVendorForm">Add Food Vendors</a>
-        <a class="btn-vendor" href="?action=showFoodVendors">View Food Vendors</a>
+        <a class="btn-vendor" href="?action=showFoodVendorForm">Add Vendors</a>
+        <a class="btn-vendor" href="?action=showFoodVendors">View Vendors</a>
         <a class="btn-vendor" href="?action=showDish">List of Dishes</a>
-        <?php
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+    </div>
+    </div>   
 
-    include_once 'controllers/controller_main.php';
-    // include_once("controllers/controller.php");
-    // include_once("controllers/Ingredient_controller.php");
-    // include_once("controllers/controller_supplier.php");
-    // include_once("controllers/food_vendor_controller.php");
-    include_once 'models/model_supplier.php';
-    include_once 'models/model_ingredient.php';
-    include_once 'models/food_vendor_model.php';
-
-    // $connection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
-    // $controller = new Controller($connection);
-
-    // $ingredientConnection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
-    // $ingredientController = new IngredientController($ingredientConnection);
-
-    // $supplierConnection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
-    // $supplierController = new SupplierController($supplierConnection);
-
-    // $foodVendorConnection = new ConnectionObject("localhost", "shima_food", "shimashima261710", "shima94_food");
-    // $foodVendorController = new FoodVendorController($foodVendorConnection);
-
-    // $action = isset($_GET['action']) ? $_GET['action'] : '';
-
-    // if ($action === 'edit') {
-    //     $dishID = isset($_GET['dishID']) ? $_GET['dishID'] : '';
-    //     if ($dishID) {
-    //         $controller->editForm($dishID);
-    //     } else {
-    //         echo "<p>Error: Dish ID not provided for editing.</p>";
-    //     }
-    // } elseif ($action === 'update') {
-    //     if (isset($_POST['submit'])) {
-    //         $dishID = $_POST['dishID'];
-    //         $dishName = $_POST['dishName'];
-    //         $price = $_POST['price'];
-    //         $controller->update($dishID, $dishName, $price);
-    //     } else {
-    //         echo "<p>Error: Form not submitted for update.</p>";
-    //     }
-    // } elseif ($action === 'delete') {
-    //     $dishID = isset($_GET['dishID']) ? $_GET['dishID'] : '';
-    //     if ($dishID) {
-    //         $controller->deleteForm($dishID);
-    //     } else {
-    //         echo "<p>Error: Dish ID not provided for deletion.</p>";
-    //     }
-    // } elseif ($action === 'confirm_delete') {
-    //     if (isset($_POST['submit'])) {
-    //         $dishID = $_POST['dishID'];
-    //         $controller->delete($dishID);
-    //     } else {
-    //         echo "<p>Error: Form not submitted for deletion confirmation.</p>";
-    //     }
-    // } elseif ($action === 'showDish') {
-    //     $controller->showDish();
-    // } elseif ($action === 'showDishWithVendors') {
-    //     $controller->showDishWithVendors();
-    // } elseif ($action === 'showIngredients') {
-    //     $ingredientController->showIngredients();
-    // } elseif ($action === 'showIngredientForm') {
-    //     $ingredientController->showIngredientForm();
-    // } elseif ($action === 'addIngredient') {
-    //     $ingredientController->addIngredient();
-    // } elseif ($action === 'deleteIngredient') {
-    //     $ingredientID = isset($_GET['ingredientID']) ? $_GET['ingredientID'] : '';
-    //     if ($ingredientID) {
-    //         $ingredientController->deleteIngredient($ingredientID);
-    //     } else {
-    //         echo "<p>Error: Ingredient ID not provided for deletion.</p>";
-    //     }
-    // } elseif ($action === 'confirm_deleteIngredient') {
-    //     $ingredientID = isset($_GET['ingredientID']) ? $_GET['ingredientID'] : '';
-    //     $ingredientController->confirm_deleteIngredient($ingredientID);
-    // } elseif ($action === 'showSuppliers') {
-    //     $supplierController->showSuppliers();
-    // } elseif ($action === 'showSupplierForm') {
-    //     $supplierController->showSupplierForm();
-    // } elseif ($action === 'addSupplier') {
-    //     $supplierController->addSupplier();
-    // } elseif ($action === 'deleteSupplier') {
-    //     $supplierID = isset($_GET['supplierID']) ? $_GET['supplierID'] : '';
-    //     if ($supplierID) {
-    //         $supplierController->deleteSupplier($supplierID);
-    //     } else {
-    //         echo "<p>Error: Supplier ID not provided for deletion.</p>";
-    //     }
-    // } elseif ($action === 'confirm_deleteSupplier') {
-    //     $supplierID = isset($_GET['supplierID']) ? $_GET['supplierID'] : '';
-    //     $supplierController->confirm_deleteSupplier($supplierID);
-    // } elseif ($action === 'showFoodVendors') {
-    //     $foodVendorController->index();
-    // } elseif ($action === 'showFoodVendorForm') {
-    //     $foodVendorController->showFoodVendorForm();
-    // } elseif ($action === 'createFoodVendor') {
-    //     $foodVendorController->createFoodVendor();
-    // } elseif ($action === 'deleteFoodVendor') {
-    //     $foodVendorID = isset($_GET['foodVendorID']) ? $_GET['foodVendorID'] : '';
-    //     if ($foodVendorID) {
-    //         $foodVendorController->deleteFoodVendor($foodVendorID);
-    //     } else {
-    //         echo "<p>Error: foodVendor ID not provided for deletion.</p>";
-    //     }
-    // } else {
-    //     if (isset($_POST['submit'])) {
-    //         $controller->add();
-    //     } else {
-    //         $controller->showForm();
-    //     }
-    // }
-?>
+    <?php
+    include_once 'controllers/controller_main.php'; 
+    ?>
 </body>
 </html>

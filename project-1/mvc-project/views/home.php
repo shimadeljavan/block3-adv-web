@@ -74,27 +74,28 @@
         .grid-container p:hover{
             box-shadow: #45a049 0px 5px 15px;
         }
+
+    .grid-container {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.grid-container th, .grid-container td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.grid-container th {
+    background-color: #f2f2f2;
+}
     </style>
 </head>
 <body>
 <h1>List of Dish</h1>
 <a class="btn-back" href="?action=home">Add New Dish</a>
 <?php
-
-//echo '<div class="grid-container">';
-
-//if ($dishs) {
-    //foreach ($dishs as $dish) {
-        // echo '<p>' . $dish['dishID'] . ' ' . $dish['dishName'] . ' $' . $dish['price'] . '</p>';
-       // echo '<p>' . $dish['dishID'] . ' ' . $dish['dishName'] . ' $' . $dish['price'] . ' <a href="?action=edit&dishID=' . $dish['dishID'] . '">Edit</a></p>';
-//        echo '<p>' . $dish['dishID'] . ' ' . $dish['dishName'] . ' $' . $dish['price'] . ' <a class="btn-edit" href="?action=edit&dishID=' . $dish['dishID'] . '">Edit</a> <a class="btn-delete" href="?action=delete&dishID=' . $dish['dishID'] . '">Delete</a></p>';
-
-//     }
-// } else {
-//     echo '<p>No dish found</p>';
-// }
-
-// echo '</div>';
 
 //new code////////////////////////////
 echo '<div class="grid-container">';
@@ -112,6 +113,7 @@ if ($dishs) {
     echo '<p>No dishes found</p>';
 }
 echo '</div>';
+
 
 ?>
     
