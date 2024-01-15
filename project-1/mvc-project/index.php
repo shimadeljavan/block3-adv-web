@@ -10,7 +10,7 @@
     <div class="page">
     <a class="logo" href="https://shima94.web582.com/block3-adv-web/project-1/mvc-project/index.php"><h1>MVC project!</h1></a>
     <div class="grid-btn">
-        <a class="btn-vendor" href="?action=showDishWithVendors">View Join Table</a>
+        <!-- <a class="btn-vendor" href="?action=showDishWithVendors">View Join Table</a> -->
         <a class="btn-vendor" href="?action=showIngredients">View Ingredients</a>
         <a class="btn-vendor" href="?action=showSuppliers">View Suppliers</a>
         <a class="btn-vendor" href="?action=showFoodVendorForm">Add Vendors</a>

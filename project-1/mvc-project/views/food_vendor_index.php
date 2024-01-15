@@ -57,9 +57,9 @@
                 echo "<tr>";
                 echo "<td>{$vendor['foodVendorID']}</td>";
                 echo "<td>" . (isset($vendor['vendorName']) ? $vendor['vendorName'] : '') . "</td>";
-                echo "<td>" . (isset($vendor['dishID']) ? $vendor['dishID'] : '') . "</td>";
-                echo "<td>" . (isset($vendor['supplierID']) ? $vendor['supplierID'] : '') . "</td>";
-                echo "<td>" . (isset($vendor['ingredientID']) ? $vendor['ingredientID'] : '') . "</td>";
+                echo "<td>" . (isset($vendor['dishName']) ? $vendor['dishName'] : '') . "</td>";
+                echo "<td>" . (isset($vendor['supplierName']) ? $vendor['supplierName'] : '') . "</td>";
+                echo "<td>" . (isset($vendor['ingredientName']) ? $vendor['ingredientName'] : '') . "</td>";
                 echo "</tr>";
             }
             ?>

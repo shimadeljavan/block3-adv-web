@@ -58,8 +58,8 @@
             echo '<p>' . 
                 'Vendor ID: ' . $dish['foodVendorID'] . '<br>' . 
                 'Vendor Name: ' . $dish['vendorName'] . '<br>' . 
-                'Supplier ID: ' . $dish['supplierID'] . '<br>' . 
-                'Ingredient ID: ' . $dish['ingredientID'] . '<br>' . 
+                'Supplier ID: ' . $dish['supplierName'] . '<br>' . 
+                'Ingredient ID: ' . $dish['ingredientName'] . '<br>' . 
                 'Price: $' . $dish['price'] . '<br>' .
                 'Dish Name: ' . $dish['dishName'] . '<br>' .
                 '</p>';
