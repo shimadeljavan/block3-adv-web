@@ -48,9 +48,9 @@
             <tr>
                 <th>Food Vendor ID</th>
                 <th>Vendor Name</th>
-                <th>Dish ID</th>
-                <th>Supplier ID</th>
-                <th>Ingredient ID</th>
+                <th>Dish Name</th>
+                <th>Supplier Name</th>
+                <th>Ingredient Name</th>
             </tr>
             <?php
             foreach ($foodVendors as $vendor) {
